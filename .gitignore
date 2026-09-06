@@ -1,5 +1,4 @@
-# deb构建产物
-debian/
+#上级目录deb输出产物
 ../*.deb
 ../*.buildinfo
 ../*.changes

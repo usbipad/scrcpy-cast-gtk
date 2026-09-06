@@ -1,0 +1,6 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: scrcpy-cast-gtk
+Source: https://github.com/usbipad/scrcpy-cast-gtk
+Files: *
+Copyright: 2026 usbipad <1495941192+usbipad@users.noreply.github.com>
+License: Expat

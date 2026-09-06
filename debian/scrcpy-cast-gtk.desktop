@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Scrcpy Cast GTK
+Name[zh_CN]=Scrcpy投屏
+Comment=Mirror and control Android devices via scrcpy
+Comment[zh_CN]=投屏并控制 Android 设备
+Exec=scrcpy-cast-gtk
+Icon=scrcpy-cast-gtk
+Terminal=false
+Categories=Utility;AudioVideo;
+Keywords=scrcpy;cast;mirror;android;投屏;
+StartupWMClass=io.github.usbipad.scrcpycastgtk
+StartupNotify=true

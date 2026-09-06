@@ -4,11 +4,10 @@ echo "错误：请在项目根目录（包含 main.py）执行此脚本"
 exit 1
 fi
 set -e
-rm -rf debian
-rm -f ../*.deb ../*.buildinfo ../*.changes
+
 mkdir -p debian/source
 
-# ========== control：Source与Package之间保留空行，修复dpkg-source报错 ==========
+# ========== control ==========
 cat > debian/control <<'EOF'
 Source: scrcpy-cast-gtk
 Section: utils
@@ -28,7 +27,7 @@ Description: GTK frontend for scrcpy
  Depends on system‑installed scrcpy and adb.
 EOF
 
-# ========== copyright：Expat 对应MIT许可证 ==========
+# ========== copyright Expat(MIT) ==========
 cat > debian/copyright <<'EOF'
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: scrcpy-cast-gtk
@@ -137,10 +136,21 @@ EOF
 chmod +x debian/prerm
 
 # ========== 构建deb ==========
+# ========== 构建deb ==========
 dpkg-buildpackage -b -uc -us
 
+# ========== 构建完成后：清理debhelper临时文件，保留debian配置文件 ==========
+rm -rf debian/scrcpy-cast-gtk
+rm -rf debian/.debhelper
+rm -f debian/debhelper-build-stamp
+rm -f debian/files
+rm -f debian/*.substvars
+rm -f debian/*.debhelper.log
+
 echo "=========================================="
-echo "✅ 构建完成！生成的 .deb 文件位于上级目录："
+echo "✅ 构建完成，已自动清理debian内部构建临时文件（含 .debhelper 隐藏目录）"
+echo "✅ debian目录现在剩下的全部是可提交git的配置文件"
+echo "生成的 .deb 文件位于上级目录："
 ls -lh ../scrcpy-cast-gtk_*.deb
 echo
 echo "安装命令："

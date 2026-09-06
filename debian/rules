@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+
+override_dh_install:
+	# 安装主python程序
+	mkdir -p debian/scrcpy-cast-gtk/usr/lib/scrcpy-cast-gtk
+	install -D -m 755 main.py debian/scrcpy-cast-gtk/usr/lib/scrcpy-cast-gtk/main.py
+
+	# 私有图标资源
+	mkdir -p debian/scrcpy-cast-gtk/usr/lib/scrcpy-cast-gtk/icon-res
+	cp icon/hicolor/scrcpy-cast-gtk/256x256/apps/scrcpy-cast-gtk.png debian/scrcpy-cast-gtk/usr/lib/scrcpy-cast-gtk/icon-res/scrcpy.png
+
+	# 系统hicolor图标
+	for size in 48x48 128x128 256x256; do \
+		mkdir -p debian/scrcpy-cast-gtk/usr/share/icons/hicolor/$$size/apps; \
+		cp icon/hicolor/scrcpy-cast-gtk/$$size/apps/scrcpy-cast-gtk.png debian/scrcpy-cast-gtk/usr/share/icons/hicolor/$$size/apps/; \
+	done
+
+	# desktop文件与wrapper启动脚本
+	mkdir -p debian/scrcpy-cast-gtk/usr/share/applications
+	cp debian/scrcpy-cast-gtk.desktop debian/scrcpy-cast-gtk/usr/share/applications/io.github.usbipad.scrcpycastgtk.desktop
+	mkdir -p debian/scrcpy-cast-gtk/usr/bin
+	cp debian/scrcpy-cast-gtk-wrapper debian/scrcpy-cast-gtk/usr/bin/scrcpy-cast-gtk
+	chmod 755 debian/scrcpy-cast-gtk/usr/bin/scrcpy-cast-gtk
+
+	# 将仓库根目录MIT LICENSE打入deb文档目录
+	mkdir -p debian/scrcpy-cast-gtk/usr/share/doc/scrcpy-cast-gtk
+	install -m 644 LICENSE debian/scrcpy-cast-gtk/usr/share/doc/scrcpy-cast-gtk/LICENSE
+
+	dh_install
