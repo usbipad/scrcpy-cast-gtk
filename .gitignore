@@ -1,0 +1,10 @@
+# deb构建产物
+debian/
+../*.deb
+../*.buildinfo
+../*.changes
+
+#编辑器临时文件
+*~
+*.swp
+*.swo
