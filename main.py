@@ -1,7 +1,8 @@
 #! /usr/bin/python3
 import gi
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gtk, GLib, Pango, Gio, GObject
+gi.require_version("Adw", "1")
+from gi.repository import Gtk, GLib, Pango, Gio, GObject, Adw
 import threading
 import subprocess
 import re
@@ -2073,8 +2074,15 @@ class ScrcpyCastWindow(Gtk.ApplicationWindow):
         self._safe_finalize(finalize_callback)
 
 
-# ========================== Gtk.Application 子类 ==========================
-class ScrcpyCastApplication(Gtk.Application):
+# ========================== Adw.Application 子类 ==========================
+class ScrcpyCastApplication(Adw.Application):
+    """
+    使用 Adw.Application 作为应用基类，libadwaita 会自动接管：
+      - 通过 XDG Desktop Portal 读取系统亮暗色（org.freedesktop.appearance color-scheme）
+      - 运行时用户切换系统明暗，Adw.StyleManager 会自动刷新所有窗口样式
+      - GNOME / KDE / XFCE / Sway 等桌面全部适用
+    无需手动监听 gsettings / kconfig，也无需自己设置 Gtk.Settings.color-scheme。
+    """
     def __init__(self):
         super().__init__(application_id=APP_ID)
         self.scrcpy_bin = None

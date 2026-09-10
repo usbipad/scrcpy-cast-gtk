@@ -1,9 +1,10 @@
-scrcpy-cast-gtk (1.0.0) unstable; urgency=medium
-  * Initial release
+scrcpy-cast-gtk (1.1.0) unstable; urgency=medium
+  * Feature: Migrate to Adw.Application, real‑time light/dark theme via libadwaita
+  * Add gir1.2-adw-1 runtime dependency
+  * Minimum supported Debian version: 12 Bookworm (Debian11 unsupported)
   * Build as Architecture: all, pure python GUI package
   * Remove bundled binary support, depend on system scrcpy+adb
-  * Remove bundled‑related copyright entries
   * Install project LICENSE into /usr/share/doc
-  * License: Expat(MIT) match repository LICENSE
-  * Fix debian/control missing blank line between source and binary stanza
- -- usbipad <1495941192+usbipad@users.noreply.github.com>  Thu, 04 Sep 2026 22:30:00 +0800
+  * License: Expat(MIT)
+  * Fix dpkg-gencontrol warnings: drop unused substitution variables
+ -- usbipad <1495941192+usbipad@users.noreply.github.com>  Thu, 11 Sep 2026 20:00:00 +0800
