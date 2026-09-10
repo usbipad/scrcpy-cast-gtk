@@ -1,17 +1,15 @@
-
-```
-<div align="center">
 # scrcpy‑cast‑gtk 📱
 > GTK4 GUI frontend for scrcpy — Android screen‑cast tool for Linux
-<img src="./assets/main-windows.png" width="700" />
+![](./assets/main-windows.png)
 **原生 GTK4 图形界面，封装 scrcpy，在 Debian Linux 上投屏安卓设备**
-</div>
 
 ## ✨ 项目简介
+
 scrcpy‑cast‑gtk 是 scrcpy 的图形外壳，使用 Python + GTK4 开发，面向 GNOME Wayland / X11 环境。
 不用记忆命令行参数，图形界面完成安卓投屏相关操作。
 
 主要功能：
+
 - ADB 设备自动扫描与设备选择
 - USB / Wi‑Fi 无线投屏
 - 投屏时保持手机常亮
@@ -20,10 +18,12 @@ scrcpy‑cast‑gtk 是 scrcpy 的图形外壳，使用 Python + GTK4 开发，�
 - 输出原生 deb 软件包，方便 Debian 系发行版安装部署
 
 投屏效果预览：
-<img src="./assets/casting-preview.png" width="700" />
+![](./assets/casting-preview.png)
 
 ## 📋 依赖
+
 ### 运行时依赖
+
 - `scrcpy`
 - `adb`
 - `python3`
@@ -32,12 +32,14 @@ scrcpy‑cast‑gtk 是 scrcpy 的图形外壳，使用 Python + GTK4 开发，�
 - `gir1.2‑adw‑1`
 
 ### 构建 deb 包依赖
+
 - `dpkg‑buildpackage`
 - `debhelper‑compat`
 - `dh‑python`
 
 **一键安装编译依赖：**
-```bash
+
+```
 sudo apt install dpkg-buildpackage debhelper-compat dh-python
 ```
 
@@ -74,8 +76,4 @@ sudo apt install ./../scrcpy‑cast‑gtk_1.1.0_all.deb
 
 ```
 sudo apt remove scrcpy‑cast‑gtk
-```
-
-```
-
 ```
