@@ -1,3 +1,4 @@
+```
 <div align="center">
 # scrcpy‑cast‑gtk 📱
 > GTK4 GUI frontend for scrcpy — Android screen‑cast tool for Linux
@@ -72,6 +73,8 @@ sudo apt install ./../scrcpy‑cast‑gtk_1.1.0_all.deb
 
 ```
 sudo apt remove scrcpy‑cast‑gtk
+```
+
 ```
 
 ```
